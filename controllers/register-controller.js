@@ -18,16 +18,18 @@ module.exports.register = function(req, res) {
     // console.log(users);
     connection.query('INSERT INTO users SET ?', users, (err, results, fields) => {
         if(err){
-            res.json({
-                status:false,
-                message:'there are some error with query'
-            });    
+            // res.json({
+            //     status:false,
+            //     message:'there are some error with query'
+            // });    
+            res.redirect("/signup");            
         }else {
-            res.json({
-                status:true,
-                data:results,
-                message:'user registered sucessfully'
-            })            
+            // res.json({
+            //     status:true,
+            //     data:results,
+            //     message:'user registered sucessfully'
+            // })
+            res.redirect("/");            
     
         }
 

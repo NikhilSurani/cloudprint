@@ -1,3 +1,10 @@
+$(document).ready(function(){
+
+   
+
+});
+
+
 function addUser(){
             
     window.location.href = '/users/add';

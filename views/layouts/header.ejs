@@ -1,22 +1,47 @@
 <!DOCTYPE html>
+
 </html>
-    <head>
-        <title>CRUD Node.js-MySQL</title>
 
-        <!-- <link href="/../css/bootstrap.css" rel="stylesheet">
-        <link href="/../css/bootstrap.min.css" rel="stylesheet">  -->
-        <link href="/../css/style.css" rel="stylesheet">
-                
-        <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<head>
+    <title>CRUD Node.js-MySQL</title>
 
-        <!-- <script type="text/javascript" src="/../js/bootstrap.js"></script> -->
-        <!-- <script type="text/javascript" src="/../js/bootstrap.min.js"></script> -->
-        <script type="text/javascript" src="/../js/common.js"></script>
+    <!-- <link href="/../css/bootstrap.css" rel="stylesheet">
+    <link href="/../css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="/../css/style.css" rel="stylesheet">                
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- <script type="text/javascript" src="/../js/bootstrap.js"></script>
+    <script type="text/javascript" src="/../js/bootstrap.min.js"></script> -->
+    <script type="text/javascript" src="/../js/common.js"></script>
+
+</head>
+
+<body>     
+    <%if(errors && errors.length > 0 ){ %>
+        <div class="alert alert-error">
+            <%= errors %>
+        </div>
+
+    <% }else if(success.length > 0 && success ) { %>
+        <div class="alert alert-success">
+                <strong><%= success %></strong>
+            </div>
+    <% } %>
 
 
-    </head>
+    <div id="wrapper">
+        <% if(user) { %>
+            <a type="button" href="/logout" class="btn btn-light btn-lg" style="float: right; color: wheat;  padding-top: 12px; height: 63px; width: 109px;font-size: 30px;">logout</a>
+            <% } else { %>
+            <a type="button" href="/" class="btn btn-light btn-lg" style="float: right; color: wheat; padding-top: 12px; height: 63px;width: 109px;font-size: 30px;">Login</a>            
+            <a type="button" href="/signup" class="btn btn-light btn-lg" style="float: right; color: wheat; padding-top: 12px; height: 63px;width: 109px;font-size: 30px;">Sign up</a>            
+        <% } %>
+        <div class="page-header">
+            <h2>
+                <%=page_title%>                
+            </h2>            
+        </div>        
 
-    <body>
-        <div id="wrapper">
-            <div class="page-header"><h2><%=page_title%></h2></div>
-            <div class="page-container">
+        <div class="page-container">

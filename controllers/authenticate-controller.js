@@ -9,34 +9,24 @@ module.exports.authenticate = (req, res) => {
 
     connection.query('SELECT * FROM users WHERE email = ?', [email], (err, results, fields) => {
         if (err) {
-            res.json({
-                status: false,
-                message: 'there are some error with query'
-            })
+            req.flash('error', 'Something is missing. Please try again after sometimes.');                                  
+            res.redirect('/');
 
         } else {
             if (results.length > 0) {
                 decryptedString = cryptr.decrypt(results[0].password);
-                if (password == decryptedString) {
+                if (password == decryptedString) {                    
+                    req.session.user = results[0];  
+                    req.flash('success', 'Successfully log in!');                                  
                     res.redirect("/users");
-                    // res.json({
-                    //     status: true,
-                    //     message: 'successfully authenticated'
-                    // })
                 } else {
-                    // res.json({
-                    //     status: false,
-                    //     message: "Email and password does not match"
-                    // });
+                    req.flash('error', 'User name & password doesn\'t matches.');                                  
                     res.redirect("/");
                 }
 
             } else {
-                // res.json({
-                //     status: false,
-                //     message: "Email does not exits"
-                // });
-                res.redirect("/");
+                req.flash('error', 'Please sign up.');                                  
+                res.redirect('/signup');
 
             }
 
