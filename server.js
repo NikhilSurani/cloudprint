@@ -6,13 +6,11 @@ var connection = require("./config");
 const path = require('path');
 var http = require('http');
 const userController = require('./controllers/user-controller');
-const logger = require('./logger');
+const fs = require("fs");
+
 const session = require('express-session');
 
 var app = express();
-
-logger.debug("Overriding 'Express' logger");
-app.use(require('morgan')({ "stream": logger.stream }));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,6 +18,17 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
+});
+
+app.use((req, res, move) => {
+    var now = new Date().toString();
+    var log = `${now}  ${req.url}  ${req.method}`;
+    
+    fs.appendFileSync("./logs/server.log", log + '\n', (err) => {
+        console.log(err);
+    });
+    move();
+    
 });
 
 app.use(session({
