@@ -67,13 +67,12 @@ app.get('/', function (req, res) {
  });
  
  app.get('/logout', function (req, res) {  
-    req.flash('success', 'Successfully logout!');  
+    req.flash('success', 'You have successfully logout!');  
     req.session.user = '';  
     // req.session.destroy();    
     app.locals.user = '';
-    res.redirect("/");
-            
-    // res.send({ Message: "Successfully logout.", data: req.session }); 
+    res.redirect("/");            
+    
  });
   
  app.get('/signup', function (req, res) {      

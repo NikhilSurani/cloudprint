@@ -50,6 +50,13 @@ body {
       height:26px;
       width:300px;
   }
+
+  input[type="password"]{
+      
+    border:1px solid #ddd;
+    height:26px;
+    width:300px;
+}
   .cancel{
       background-color:#D23641;color:#fff;
       border:1px solid #d32132;color:#fff;
@@ -67,3 +74,17 @@ body {
   .label{font-weight:bold;}
   
   #footer{margin-left:82%;margin-top:10%}
+
+
+  .alert-message {    
+    padding-left: 440px;
+    font-size: 20px;
+    font-family: serif;
+  }
+
+  .success {
+    color: green; 
+  }
+  .error {
+    color: red; 
+  }

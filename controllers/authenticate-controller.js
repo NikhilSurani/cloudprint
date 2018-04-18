@@ -17,15 +17,15 @@ module.exports.authenticate = (req, res) => {
                 decryptedString = cryptr.decrypt(results[0].password);
                 if (password == decryptedString) {                    
                     req.session.user = results[0];  
-                    req.flash('success', 'Successfully log in!');                                  
+                    req.flash('success', 'You have successfully logged in.');                                  
                     res.redirect("/users");
                 } else {
-                    req.flash('error', 'User name & password doesn\'t matches.');                                  
+                    req.flash('error', 'User name & password doesn\'t matches our database.');                                  
                     res.redirect("/");
                 }
 
             } else {
-                req.flash('error', 'Please sign up.');                                  
+                req.flash('error', 'Unable to reached to you. Please register your account.');                                  
                 res.redirect('/signup');
 
             }

@@ -1,8 +1,11 @@
 $(document).ready(function(){
-
-   
-
+    // alert("hi");
+    $(".message").fadeIn();
+    setTimeout(function(){
+        $(".message").fadeOut();
+      }, 2000);  
 });
+
 
 
 function addUser(){
