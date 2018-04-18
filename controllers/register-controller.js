@@ -8,14 +8,14 @@ module.exports.register = function(req, res) {
     var encryptedString = cryptr.encrypt(req.body.password);
 
     var users = { 
-        "first_name":req.body.name,
-        "last_name": req.body.lname,
+        "first_name":req.body.fname,
+        "last_name":req.body.lname,        
         "email":req.body.email,
         "password":encryptedString,
         "created":today,
         "modified":today
     }
-    console.log(users);
+    // console.log(users);
     connection.query('INSERT INTO users SET ?', users, (err, results, fields) => {
         if(err){
             res.json({

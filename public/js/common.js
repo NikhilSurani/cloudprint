@@ -7,12 +7,12 @@ function cancelAdd(){
     window.location.href = '/users';
 }
 
-function signup(){
+function signUp(){
     window.location.href = '/signup';
 
 }
 
 function loginPage(){
-    window.location.href = '/login';
+    window.location.href = '/';
 
 }

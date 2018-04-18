@@ -1,2 +1,5 @@
+#DIR
 /node_modules
+/logs
+#FILE
  package-lock.json
