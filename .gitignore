@@ -1,6 +1,7 @@
 #DIR
 /node_modules
 /logs
+/public/images/profiles
 #FILE
  package-lock.json
 

@@ -28,7 +28,7 @@ body {
   .page-data{padding:10px;}
   .page-header{
       
-      padding:2px;
+      padding:6px;
       padding-left:40px;
       background:#665847;color:#FEFFFD;
   }
@@ -80,6 +80,7 @@ body {
     padding-left: 440px;
     font-size: 20px;
     font-family: serif;
+    background-color: whitesmoke;    
   }
 
   .success {
@@ -87,4 +88,35 @@ body {
   }
   .error {
     color: red; 
+  }
+
+  .login-sign-up-in {      
+    float: right;
+    border:1px solid #009688;
+    color:#fff;
+    padding:26px 35px;
+    font-weight:bold;
+    /* background:#5bc0de; */
+    background-color: #009688;
+    font-size: inherit;
+  }
+
+  .sign-up {
+    float: right;
+    border:1px solid darkgoldenrod;
+    color:#fff;
+    padding:26px 35px;
+    font-weight:bold;
+    background:darkgoldenrod;
+  }
+
+  .profile-picture {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    padding: inherit;
+    object-position: center;
   }

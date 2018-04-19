@@ -9,6 +9,8 @@ const userController = require('./controllers/user-controller');
 const fs = require("fs");
 const session = require('express-session');
 const flash = require('connect-flash');
+const fileUpload  = require('express-fileupload');
+
 
 var app = express();
 
@@ -19,6 +21,13 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
+app.use(fileUpload({
+    limits: { fileSize: 50 * 1024 * 1024 },
+    safeFileNames: true,
+    preserveExtension: 4
+  }));
+  
 
 app.use((req, res, move) => {
     var now = new Date().toString();

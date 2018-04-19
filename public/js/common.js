@@ -1,9 +1,10 @@
 $(document).ready(function(){
-    // alert("hi");
-    $(".message").fadeIn();
+    
+    $(".message").show();
     setTimeout(function(){
-        $(".message").fadeOut();
+        $(".message").hide();
       }, 2000);  
+
 });
 
 
