@@ -94,20 +94,21 @@ body {
     float: right;
     border:1px solid #009688;
     color:#fff;
-    padding:26px 35px;
+    padding:22px 35px;
     font-weight:bold;
     /* background:#5bc0de; */
     background-color: #009688;
-    font-size: inherit;
+    font-size: 1.5em;
   }
 
   .sign-up {
     float: right;
     border:1px solid darkgoldenrod;
     color:#fff;
-    padding:26px 35px;
+    padding:22px 35px;
     font-weight:bold;
     background:darkgoldenrod;
+    font-size: 1.5em;
   }
 
   .profile-picture {
@@ -119,4 +120,9 @@ body {
     position: absolute;
     padding: inherit;
     object-position: center;
+  }
+
+  .pagination {
+    padding: 12px 78px;    
+    display: inline-block;
   }

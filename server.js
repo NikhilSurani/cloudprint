@@ -10,6 +10,8 @@ const fs = require("fs");
 const session = require('express-session');
 const flash = require('connect-flash');
 const fileUpload  = require('express-fileupload');
+// var paginate = require('express-paginate');
+
 
 
 var app = express();
@@ -27,6 +29,7 @@ app.use(fileUpload({
     safeFileNames: true,
     preserveExtension: 4
   }));
+
   
 
 app.use((req, res, move) => {
@@ -92,7 +95,7 @@ app.get('/', function (req, res) {
  app.post('/controllers/register-controller', registerController.register);
  app.post('/controllers/authenticate-controller', authenticateController.authenticate);
 
- app.get('/users', sessionChecker, userController.list);
+ app.get('/users',sessionChecker, userController.list);
  app.get('/users/add',sessionChecker,userController.add);
  app.post('/users/add',sessionChecker, userController.save);
  app.get('/users/edit/:id', sessionChecker, userController.edit);
