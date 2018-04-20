@@ -10,7 +10,7 @@ body {
       border-radius:0px;
   }
   a {
-    color: #00B7FF;
+    /* color: #00B7FF; */
   }
   
   #wrapper{
@@ -125,4 +125,29 @@ body {
   .pagination {
     padding: 12px 78px;    
     display: inline-block;
+  }
+
+  .isDisabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+  }
+
+  .data-search-btn{
+    /* padding:10px 20px;
+    background:#FF9900;
+    border:1px solid #fff;
+    color:#FEFFFD;
+    font-weight:bold; */
+    padding: 0px;
+    margin-top: -20px;
+    font-size: 17px;
+    border: none;
+    float: right;
+  }
+
+  .search-btn {
+    padding: 5px 20px;
+    background-color: lightgray;
   }

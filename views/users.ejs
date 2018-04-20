@@ -5,6 +5,11 @@
         <div class="data-btn">
             <button onClick="addUser();">+ Add</button>
         </div>
+        <div class="data-search-btn">
+            <input type="text" placeholder="Search.." value='<%= search ? search : "" %>' id="search_txt">
+            <button type="button" class="search-btn">clear</buttton>
+            
+        </div>
         <div class="data-table">
             <table border="1" cellpadding="7" cellspacing="7">
                 <tr>
@@ -45,9 +50,9 @@
                     </tr>
                     <% }
            
-            }else{ %>
+                     } else{ %>
                         <tr>
-                            <td colspan="3">No user</td>
+                            <td colspan="6">No user found.</td>
                         </tr>
                         <% } %>
 
@@ -61,14 +66,21 @@
                 <a href="../users?page=<%=prev%>" class="data-btn">
                     PREVIOUS
                 </a>
-            <% } %>               
+            <% } else { %>              
+                <a href="javascript:void(0)" class="data-btn isDisabled">
+                    PREVIOUS
+                </a>
+            <% } %>
 
             <%  if(next) { %>
                 <a href="../users?page=<%=next%>" class="data-btn">
                     NEXT
                 </a>
-
-            <% } %>
+            <% } else { %>
+                <a href="javascript:void(0)" class="data-btn isDisabled">
+                    NEXT
+                </a>
+            <% }%>
         </div>
 
     </div>

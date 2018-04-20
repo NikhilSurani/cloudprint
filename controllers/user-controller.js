@@ -4,45 +4,54 @@ var connection = require('./../config');
 module.exports.list = (req, res) => {
     var limit = 3;
     var page;
-    
-    if (req.query && req.query.page) {        
-        console.log(req.query.page);
+
+    if (req.query && req.query.page) {
         page = parseInt(req.query.page);
     } else {
         page = 1;
     }
 
     var start = (page * limit) - limit;
+    var totalCount, next, previous;
 
-    var totalCount;
-    var next;
-    var previous;
-        var prequery = `SELECT COUNT(id) AS TotalCount FROM customer`;
-        var query = connection.query(prequery, (err, result) => {            
-            if(err){
-                return res.send(err);
-            }
-        if (result) {            
-            total = result[0].TotalCount;
-            var pages = Math.ceil(total / limit);          
+    var searchInput;
+    if (req.query && req.query.search) {
+        searchInput = req.query.search.trim();
+        searchInput = searchInput.replace(/<(?:.|\n)*?>/gm, '');
+        req.session.search = searchInput;
+    } else {
+        searchInput = req.session.search;          
+    }
 
-            if (page > 1){
-                previous = page - 1;
-            } 
-            if (page <= (pages - 1)){
-                next = page + 1;
-            } 
-        }
-    });
+    if(req.query && req.query.searchremove){
+        searchInput = '';          
+        req.session.search = '';        
+    }
     
-    let prepareQuery = `SELECT * FROM customer ORDER BY updated DESC LIMIT ${start},${limit}`;
+    var prequery = `SELECT COUNT(id) AS TotalCount FROM customer WHERE status = 1 ${searchInput ? `AND name LIKE '%${searchInput}%'` : ""}`;
+    var query = connection.query(prequery, (err, result) => {
+        if (err) {
+            return res.send(err);
+        }
+        if (result) {
+            total = result[0].TotalCount;
+            var pages = Math.ceil(total / limit);
+
+            if (page > 1) {
+                previous = page - 1;
+            }
+            if (page <= (pages - 1)) {
+                next = page + 1;
+            }
+        }
+    });    
+
+    let prepareQuery = `SELECT * FROM customer WHERE status = 1  ${searchInput ? `AND name LIKE '%${searchInput}%'` : ""} ORDER BY updated DESC LIMIT ${start},${limit}`;
     var query = connection.query(prepareQuery, function (err, rows) {
         if (err) {
-            // console.log("Error Selecting : %s ", err);
-            console.log(query)
             return res.status(500).send(err);
         }
-        res.render('users', { page_title: "Users - Node.js", data: rows, next: next, prev: previous, currentPage: page });
+        res.render('users', { page_title: "Users - Node.js", data: rows, next: next, prev: previous, currentPage: page, search: searchInput });
     });
     //console.log(query.sql);
 };

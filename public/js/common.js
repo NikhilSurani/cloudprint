@@ -5,6 +5,22 @@ $(document).ready(function(){
         $(".message").hide();
       }, 2000);  
 
+      $( "#search_txt" ).keyup(function() {          
+          setTimeout( () => {
+            let inputText = $(this).val();
+            if(inputText){
+                window.location.href = '/users?search='+ inputText;        
+            }else {
+                window.location.href = '/users';        
+            }
+          }, 1000);        
+      });
+
+      $(".search-btn").on("click", function (){
+        $( "#search_txt" ).val("");
+        window.location.href = '/users?searchremove=1';        
+      });
+
 });
 
 
