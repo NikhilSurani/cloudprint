@@ -10,9 +10,6 @@ const fs = require("fs");
 const session = require('express-session');
 const flash = require('connect-flash');
 const fileUpload  = require('express-fileupload');
-// var paginate = require('express-paginate');
-
-
 
 var app = express();
 
