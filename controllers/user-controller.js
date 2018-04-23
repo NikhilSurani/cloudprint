@@ -1,4 +1,5 @@
-var connection = require('./../config');
+const connection = require('./../config');
+const expressValidator = require('express-validator');
 
 // user listing
 module.exports.list = (req, res) => {
@@ -63,6 +64,21 @@ module.exports.add = (req, res) => {
 module.exports.save = (req, res) => {
     let today = new Date();
     var input = JSON.parse(JSON.stringify(req.body));
+
+    req.checkBody('name', 'name is required').notEmpty();    
+    req.checkBody('email', 'Email is required ').notEmpty();
+    req.checkBody('email', 'must be a valid email').isEmail();
+    req.checkBody('phone', 'Number is required').notEmpty();
+
+    var errors = req.validationErrors();
+    if(errors){
+        req.session.errors = errors;
+        req.session.success = false;                
+        req.flash('error', errors);
+        res.redirect('/Users/add');
+        return;
+    }
+
     var data = {
         name: input.name,
         address: input.address,

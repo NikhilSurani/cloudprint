@@ -3,7 +3,7 @@ $(document).ready(function(){
     $(".message").show();
     setTimeout(function(){
         $(".message").hide();
-      }, 2000);  
+      }, 4000);  
 
       $( "#search_txt" ).keyup(function() {          
           setTimeout( () => {

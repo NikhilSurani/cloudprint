@@ -21,14 +21,20 @@
     <%if(errors && errors.length > 0 ){ %>
         <div class="alert-message error message">
             <strong>
-                <%= errors %>
+                <% errors.forEach(function(r) { %>
+                    <%= r.msg; %>
+                    <br>
+                <% }) %>
             </strong>
         </div>
 
         <% }else if(success.length > 0 && success ) { %>
             <div class="alert-message success  message">
                 <strong>
-                    <%= success %>
+                    <% success.forEach(function(r) { %>
+                        <%= r.msg; %>
+                        <br>
+                    <% }) %>
                 </strong>
             </div>
             <% } %>
